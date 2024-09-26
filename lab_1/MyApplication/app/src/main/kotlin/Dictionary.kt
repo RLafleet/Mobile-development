@@ -1,32 +1,6 @@
-class Word(val value: String) {
-    override fun equals(other: Any?): Boolean {
-        return (other is Word) && other.value == value
-    }
-
-    override fun hashCode(): Int {
-        return value.hashCode()
-    }
-}
-
-class Context(val name: String) {
-    override fun equals(other: Any?): Boolean {
-        return (other is Context) && other.name == name
-    }
-
-    override fun hashCode(): Int {
-        return name.hashCode()
-    }
-}
-
-class Translate(val value: String) {
-    override fun equals(other: Any?): Boolean {
-        return (other is Translate) && other.value == value
-    }
-
-    override fun hashCode(): Int {
-        return value.hashCode()
-    }
-}
+data class Word(val value: String)
+data class Context(val name: String)
+data class Translate(val value: String)
 
 typealias ContextMap = MutableMap<Context, MutableList<Translate>>
 
