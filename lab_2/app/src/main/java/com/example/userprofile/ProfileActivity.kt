@@ -11,7 +11,7 @@ import android.view.Menu
 import android.view.MenuItem
 import com.example.userprofile.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class ProfileActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding

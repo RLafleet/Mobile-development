@@ -1,6 +1,32 @@
-class Word(val value: String)
-class Context(val name: String)
-class Translate(val value: String)
+class Word(val value: String) {
+    override fun equals(other: Any?): Boolean {
+        return (other is Word) && other.value == value
+    }
+
+    override fun hashCode(): Int {
+        return value.hashCode()
+    }
+}
+
+class Context(val name: String) {
+    override fun equals(other: Any?): Boolean {
+        return (other is Context) && other.name == name
+    }
+
+    override fun hashCode(): Int {
+        return name.hashCode()
+    }
+}
+
+class Translate(val value: String) {
+    override fun equals(other: Any?): Boolean {
+        return (other is Translate) && other.value == value
+    }
+
+    override fun hashCode(): Int {
+        return value.hashCode()
+    }
+}
 
 typealias ContextMap = MutableMap<Context, MutableList<Translate>>
 
@@ -19,25 +45,35 @@ class Translator {
         }
     }
 
-    // сломался remove и остальные методы по типу translate
+    // починить remove
     fun remove(word: Word, context: Context, translate: Translate) {
         val contextMap = dictionary[word]
-        if (contextMap != null) {
-            val translations = contextMap[context]
-            if (translations != null && translate in translations) {
-                translations.remove(translate)
-                println("Перевод удален: ${word.value} -> (${context.name}) ${translate.value}")
-                if (translations.isEmpty()) {
-                    contextMap.remove(context)
-                }
-                if (contextMap.isEmpty()) {
-                    dictionary.remove(word)
-                }
-            } else {
-                println("Такого перевода нет.")
+        if (contextMap == null) {
+            println("Слово «${word.value}» не найдено.")
+            return
+        }
+
+        val translations = contextMap[context]
+        if (translations == null) {
+            println("Контекст «${context.name}» не найден для слова «${word.value}».")
+            return
+        }
+
+        if (translate in translations) {
+            translations.remove(translate)
+            println("Перевод удален: ${word.value} -> (${context.name}) ${translate.value}")
+
+            if (translations.isEmpty()) {
+                contextMap.remove(context)
+                println("Контекст «${context.name}» удален, так как больше нет переводов.")
+            }
+
+            if (contextMap.isEmpty()) {
+                dictionary.remove(word)
+                println("Слово «${word.value}» удалено из словаря.")
             }
         } else {
-            println("Слово не найдено.")
+            println("Такой перевод «${translate.value}» для слова «${word.value}» в контексте «${context.name}» не найден.")
         }
     }
 

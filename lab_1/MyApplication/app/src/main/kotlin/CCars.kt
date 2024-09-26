@@ -15,18 +15,20 @@ enum class BicycleFrame {
     ALUMINUM, STEEL, CARBON
 }
 
+sealed interface Car : Vehicle
+
 // добавить класс машины отдельно от vehicle
 data class GasolineCar(
     val engine: InternalCombustionEngine,
     val wheels: List<CarWheel>,
     val steeringWheel: SteeringWheel
-) : Vehicle
+) : Car
 
 data class ElectricCar(
     val motor: ElectricMotor,
     val wheels: List<CarWheel>,
     val autopilot: Autopilot
-) : Vehicle
+) : Car
 
 data class InternalCombustionEngine(
     val volume: Double,
@@ -34,7 +36,7 @@ data class InternalCombustionEngine(
 )
 
 enum class FuelType {
-    DIESEL, FUEL_92, FUEL_95, FUEL_98, FUEL_100
+    DIESEL, FUEL_92, FUEL_95
 }
 
 data class ElectricMotor(val power: Int)
@@ -42,13 +44,13 @@ data class ElectricMotor(val power: Int)
 data class Autopilot(val system: AutopilotSystem)
 
 enum class AutopilotSystem {
-    YANDEX, TESLA
+    OWN, TESLA
 }
 
 data class CarWheel(val diameter: Int, val brand: String, val disk: Disk)
 
 enum class Disk {
-    CAST, FORGED, STAMPED
+    CAST, FORGED
 }
 
 data class SteeringWheel(val type: String)
