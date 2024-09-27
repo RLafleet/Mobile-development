@@ -20,6 +20,11 @@
     <string name="user_about_from">Йе, урождённый Канье Омари Вест — репер, певец, актер, автор, продюсер и дизайнер из Атланты/Чикаго</string>
     <string name="user_about_product">Основатель собственного лейбла G.O.O.D. Music.</string>
     <string name="user_about_childhood">Вырос в Чикаго, где с юных лет был связан с музыкой</string>
+    <string name="user_about_combined">
+        Йе, урождённый Канье Омари Вест — репер, певец, актер, автор, продюсер и дизайнер из Атланты/Чикаго\n\n
+        Основатель собственного лейбла G.O.O.D. Music.\n\n
+        Вырос в Чикаго, где с юных лет был связан с музыкой
+    </string>
     <string name="specialty">Специальность</string>
     <string name="age">Возраст</string>
     <string name="height">Рост</string>
