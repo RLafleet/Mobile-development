@@ -21,21 +21,33 @@ class Translator {
 
     // починить remove
     fun remove(word: Word, context: Context, translate: Translate) {
-        val contextMap = dictionary[word]
+        var contextMap = dictionary[word]
+
+        var originalWord = word
+
         if (contextMap == null) {
-            println("Слово «${word.value}» не найдено.")
-            return
+            val foundEntry = dictionary.entries.find { (_, ctxMap) ->
+                ctxMap[context]?.contains(Translate(word.value)) == true
+            }
+
+            if (foundEntry != null) {
+                contextMap = foundEntry.value
+                originalWord = foundEntry.key
+            } else {
+                println("Слово «${word.value}» не найдено.")
+                return
+            }
         }
 
         val translations = contextMap[context]
         if (translations == null) {
-            println("Контекст «${context.name}» не найден для слова «${word.value}».")
+            println("Контекст «${context.name}» не найден для слова «${originalWord.value}».")
             return
         }
 
         if (translate in translations) {
             translations.remove(translate)
-            println("Перевод удален: ${word.value} -> (${context.name}) ${translate.value}")
+            println("Перевод удален: ${originalWord.value} -> (${context.name}) ${translate.value}")
 
             if (translations.isEmpty()) {
                 contextMap.remove(context)
@@ -43,13 +55,14 @@ class Translator {
             }
 
             if (contextMap.isEmpty()) {
-                dictionary.remove(word)
-                println("Слово «${word.value}» удалено из словаря.")
+                dictionary.remove(originalWord)
+                println("Слово «${originalWord.value}» удалено из словаря.")
             }
         } else {
-            println("Такой перевод «${translate.value}» для слова «${word.value}» в контексте «${context.name}» не найден.")
+            println("Такой перевод «${translate.value}» для слова «${originalWord.value}» в контексте «${context.name}» не найден.")
         }
     }
+
 
     fun getTranslate(word: Word): ContextMap? {
         return dictionary[word]
