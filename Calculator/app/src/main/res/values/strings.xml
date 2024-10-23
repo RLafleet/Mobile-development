@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Профиль пользователя</string>
+    <string name="app_name">Calculator</string>
     <string name="user_name">Ваня Акула</string>
     <string name="title_about">О себе</string>
     <string name="title_interests">Интересы</string>
