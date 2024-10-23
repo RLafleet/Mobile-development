@@ -1,34 +1,19 @@
 <resources>
-    <string name="app_name">Calculator</string>
-    <string name="user_name">Ваня Акула</string>
-    <string name="title_about">О себе</string>
-    <string name="title_interests">Интересы</string>
-    <string name="user_description">Разработчик мобильных приложений, увлечённый новыми технологиями.</string>
-    <string name="edit_profile">Редактировать профиль</string>
-    <string name="avatar_desc">Аватар пользователя</string>
-    <string name="interest1">Программирование</string>
-    <string name="interest2">Музыка</string>
-    <string name="interest3">Спорт</string>
-    <string name="interest4">Путешествия</string>
-    <string name="interest5">Чтение книг</string>
-    <string name="followers_title">Подписчиков</string>
-    <string name="posts_title">Постов</string>
-    <string name="follow_title">Подписок</string>
-    <string name="post_amount">35</string>
-    <string name="follow_amount">200</string>
-    <string name="followers_amount">482 000</string>
-    <string name="user_about_from">Йе, урождённый Канье Омари Вест — репер, певец, актер, автор, продюсер и дизайнер из Атланты/Чикаго</string>
-    <string name="user_about_product">Основатель собственного лейбла G.O.O.D. Music.</string>
-    <string name="user_about_childhood">Вырос в Чикаго, где с юных лет был связан с музыкой</string>
-    <string name="user_about_combined">
-        Йе, урождённый Канье Омари Вест — репер, певец, актер, автор, продюсер и дизайнер из Атланты/Чикаго\n\n
-        Основатель собственного лейбла G.O.O.D. Music.\n\n
-        Вырос в Чикаго, где с юных лет был связан с музыкой
-    </string>
-    <string name="specialty">Специальность</string>
-    <string name="age">Возраст</string>
-    <string name="height">Рост</string>
-    <string name="specialty_p">Программист</string>
-    <string name="age_p">25 лет</string>
-    <string name="height_p">180 см</string>
+    <string name="app_name">calculator</string>
+    <string name="button_0">0</string>
+    <string name="button_1">1</string>
+    <string name="button_2">2</string>
+    <string name="button_3">3</string>
+    <string name="button_4">4</string>
+    <string name="button_5">5</string>
+    <string name="button_6">6</string>
+    <string name="button_7">7</string>
+    <string name="button_8">8</string>
+    <string name="button_9">9</string>
+    <string name="button_add">+</string>
+    <string name="button_subtract">-</string>
+    <string name="button_multiply">*</string>
+    <string name="button_divide">/</string>
+    <string name="button_decimal">,</string>
+    <string name="button_clear">&lt;</string>
 </resources>
