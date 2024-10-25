@@ -8,7 +8,8 @@ import androidx.appcompat.app.AppCompatActivity
 
 class Calculator : AppCompatActivity(), View.OnClickListener {
 
-    private lateinit var display: TextView
+    private lateinit var expressionDisplay: TextView
+    private lateinit var resultDisplay: TextView
 
     private var canAddOperation = false
     private var canAddDecimal = true
@@ -17,14 +18,15 @@ class Calculator : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        display = findViewById(R.id.display)
+        expressionDisplay = findViewById(R.id.expression_display)
+        resultDisplay = findViewById(R.id.result_display)
 
         val buttonIds = listOf(
             R.id.button0, R.id.button1, R.id.button2, R.id.button3,
             R.id.button4, R.id.button5, R.id.button6, R.id.button7,
             R.id.button8, R.id.button9, R.id.button_add, R.id.button_subtract,
             R.id.button_multiply, R.id.button_divide, R.id.button_decimal,
-            R.id.button_clear, R.id.button_equals
+            R.id.button_clear
         )
 
         for (id in buttonIds) {
@@ -38,53 +40,51 @@ class Calculator : AppCompatActivity(), View.OnClickListener {
                 R.id.button0, R.id.button1, R.id.button2, R.id.button3,
                 R.id.button4, R.id.button5, R.id.button6, R.id.button7,
                 R.id.button8, R.id.button9 -> {
-                    appendToDisplay(v.text.toString())
+                    appendToExpression(v.text.toString())
                     canAddOperation = true
                 }
                 R.id.button_add, R.id.button_subtract, R.id.button_multiply, R.id.button_divide -> {
                     if (canAddOperation) {
-                        appendToDisplay(" ${v.text} ")
+                        appendToExpression(" ${v.text} ")
                         canAddOperation = false
                         canAddDecimal = true
                     }
                 }
                 R.id.button_decimal -> {
                     if (canAddDecimal) {
-                        appendToDisplay(".")
+                        appendToExpression(".")
                         canAddDecimal = false
                     }
                 }
                 R.id.button_clear -> {
-                    removeLastCharacter()
-                }
-                R.id.button_equals -> {
-                    calculateResult()
+                    clearExpression()
                 }
             }
+            calculateResult()
         }
     }
 
-    private fun removeLastCharacter() {
-        val currentText = display.text.toString()
-        if (currentText.isNotEmpty()) {
-            display.text = currentText.substring(0, currentText.length - 1)
+    private fun appendToExpression(text: String) {
+        if (expressionDisplay.text == "0") {
+            expressionDisplay.text = ""
         }
+        expressionDisplay.append(text)
     }
 
-    private fun appendToDisplay(text: String) {
-        if (display.text == "0") {
-            display.text = ""
-        }
-        display.append(text)
+    private fun clearExpression() {
+        expressionDisplay.text = ""
+        resultDisplay.text = "0"
     }
 
     private fun calculateResult() {
-        val expression = display.text.toString()
+        val expression = expressionDisplay.text.toString()
         try {
             val result = evaluateExpression(expression)
-            display.text = result.toString()
+            resultDisplay.text = result.toString()
+        } catch (e: ArithmeticException) {
+            resultDisplay.text = "Ошибка: деление на 0"
         } catch (e: Exception) {
-            display.text = "Error"
+            resultDisplay.text = "Ошибка"
         }
     }
 
@@ -143,8 +143,12 @@ class Calculator : AppCompatActivity(), View.OnClickListener {
             "+" -> numbers.add(a + b)
             "-" -> numbers.add(a - b)
             "*" -> numbers.add(a * b)
-            "/" -> numbers.add(a / b)
+            "/" -> {
+                if (b == 0.0) {
+                    throw ArithmeticException("Деление на ноль")
+                }
+                numbers.add(a / b)
+            }
         }
     }
-
 }
