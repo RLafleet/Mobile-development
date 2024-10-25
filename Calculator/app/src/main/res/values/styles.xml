@@ -1,0 +1,18 @@
+<resources>
+    <!-- Общий стиль для кнопок -->
+    <style name="CalculatorButtonBase">
+        <item name="android:layout_width">80dp</item>
+        <item name="android:layout_height">80dp</item>
+        <item name="android:textSize">24sp</item>
+        <item name="cornerRadius">32dp</item>
+        <item name="backgroundTint">#2196F3</item>
+        <item name="android:layout_marginEnd">8sp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:insetTop">0dp</item>
+    </style>
+
+    <!-- Специальный стиль для кнопок с увеличенным углом скругления -->
+    <style name="CalculatorButtonLarge" parent="CalculatorButtonBase">
+        <item name="cornerRadius">40dp</item>
+    </style>
+</resources>

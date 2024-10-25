@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">calculator</string>
+    <string name="expression_label">Выражение</string>
+    <string name="result_label">Результат</string>
+    <string name="button_equals">=</string>
+    <string name="initial_result">0</string>
     <string name="button_0">0</string>
     <string name="button_1">1</string>
     <string name="button_2">2</string>
