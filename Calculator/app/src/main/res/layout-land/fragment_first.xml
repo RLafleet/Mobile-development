@@ -7,7 +7,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    tools:context=".Calculator">
+    tools:context=".Calculator"
+    tools:ignore="HardcodedText">
 
     <LinearLayout
         android:id="@+id/expression_result_container"
@@ -16,11 +17,12 @@
         android:orientation="vertical"
         android:background="@android:color/holo_blue_light"
         android:padding="16dp"
+        android:gravity="end"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/button_layout"
-        android:gravity="end"> <!-- Aligns child elements to the right -->
+        android:layout_marginEnd="16dp">
 
         <TextView
             android:id="@+id/expression_label"
@@ -63,21 +65,20 @@
             android:singleLine="true" />
     </LinearLayout>
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/button_layout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:padding="16dp"
+        android:padding="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp">
 
-        <!-- Первая строка: 7 8 9 / -->
+        <!-- Первая строка кнопок -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button7"
-            android:layout_width="80dp"
+            android:layout_width="0dp"
             android:layout_height="80dp"
             android:text="@string/button_7"
             android:textSize="24sp"
@@ -86,11 +87,12 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@id/button8"
-            android:layout_marginEnd="8dp"/>
+            app:layout_constraintWidth_percent="0.25"
+            android:layout_marginEnd="8dp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button8"
-            android:layout_width="80dp"
+            android:layout_width="0dp"
             android:layout_height="80dp"
             android:text="@string/button_8"
             android:textSize="24sp"
@@ -99,11 +101,12 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toEndOf="@id/button7"
             app:layout_constraintEnd_toStartOf="@id/button9"
-            android:layout_marginEnd="8dp"/>
+            app:layout_constraintWidth_percent="0.25"
+            android:layout_marginEnd="8dp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button9"
-            android:layout_width="80dp"
+            android:layout_width="0dp"
             android:layout_height="80dp"
             android:text="@string/button_9"
             android:textSize="24sp"
@@ -112,11 +115,12 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toEndOf="@id/button8"
             app:layout_constraintEnd_toStartOf="@id/button_divide"
-            android:layout_marginEnd="8dp"/>
+            app:layout_constraintWidth_percent="0.25"
+            android:layout_marginEnd="8dp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button_divide"
-            android:layout_width="80dp"
+            android:layout_width="0dp"
             android:layout_height="80dp"
             android:text="@string/button_divide"
             android:textSize="24sp"
@@ -125,7 +129,9 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toEndOf="@id/button9"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="8dp"/>
+            app:layout_constraintWidth_percent="0.25"
+            android:layout_marginEnd="8dp" />
+
 
         <!-- Вторая строка: 4 5 6 * -->
         <com.google.android.material.button.MaterialButton
