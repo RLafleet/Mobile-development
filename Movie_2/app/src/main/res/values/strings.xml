@@ -1,0 +1,5 @@
+<resources>
+    <string name="appName">Movie</string>
+    <string name="appBarText">Фильмы</string>
+    <string name="moviePageSubtitle">Описание</string>
+</resources>
