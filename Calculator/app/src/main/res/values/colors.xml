@@ -10,4 +10,5 @@
     <color name="shadow_color">#E0E0E0</color>
     <color name="lightCream">#FFF4F4</color>
     <color name="shadowColor">#888888</color>
+    <color name="actionsColor">#A6DE65</color>
 </resources>
